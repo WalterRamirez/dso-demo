@@ -40,14 +40,14 @@
   - :who: 
     :why: 
     :versions:
-    - 1.2.6
+    - 1.2.11
     :when: 2021-09-29 15:27:21.894141000 Z
 - - :approve
   - logback-classic
   - :who: 
     :why: 
     :versions:
-    - 1.2.6
+    - 1.2.11
     :when: 2021-09-29 15:27:21.894141000 Z
 - - :approve
   - jakarta.xml.bind-api

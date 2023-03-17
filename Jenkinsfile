@@ -101,6 +101,24 @@ pipeline {
         }
       }
     }
+    stage('Image Analysis') {
+      parallel {
+        stage('Image Linting') {
+          steps {
+            container('docker-tools') {
+              sh 'dockle docker.io/antonio200x/dsodemo'
+            }
+          }
+        }
+        stage('Image Scan') {
+          steps {
+            container('docker-tools') {
+              sh 'trivy image --exit-code 1 antonio200x/dso-demo'
+            }
+          }
+        }
+      }
+    }
 
     stage('Deploy to Dev') {
       steps {

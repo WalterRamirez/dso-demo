@@ -34,7 +34,7 @@ spec:
         - cat
       tty: true
     - name: kaniko
-      image: gcr.io/kaniko-project/executor:v1.6.0-debug
+      image: gcr.io/kaniko-project/executor:debug
       imagePullPolicy: Always
       command:
         - sleep
@@ -44,7 +44,7 @@ spec:
       - name: container
         value: kube
       volumeMounts:
-        - name: jenkins-docker-cfg
+        - name: kaniko-secret
           mountPath: /kaniko/.docker
     - name: slscan
       image: shiftleft/sast-scan
@@ -62,11 +62,12 @@ spec:
     - name: trivycache
       hostPath:
         path: /tmp/trivycache/
-    - name: jenkins-docker-cfg
+    - name: kaniko-secret
       projected:
         sources:
         - secret:
             name: regcred
+            secretName: regcred
             items:
               - key: .dockerconfigjson
                 path: config.json

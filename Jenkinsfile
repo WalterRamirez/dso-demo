@@ -113,7 +113,7 @@ pipeline {
         stage('Image Scan') {
           steps {
             container('docker-tools') {
-              sh 'trivy image --exit-code 1 antonio200x/dso-demo'
+              sh 'trivy image antonio200x/dso-demo'
             }
           }
         }

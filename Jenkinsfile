@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    ARGO_SERVER = 'xx.xx.xx.xx:32100'
+    ARGO_SERVER = '34.71.89.81:32100'
   }
   agent {
     kubernetes {
